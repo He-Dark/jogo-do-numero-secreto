@@ -17,9 +17,9 @@ exibirMensagemInicial();
 
 function verificarChute() {
   let chute = document.querySelector("input").value.trim();
+  let paragrafoVazio = document.getElementById("vazio");
   focoNoInput();
   if (chute === "") {
-    let paragrafoVazio = document.getElementById("vazio");
     paragrafoVazio.innerHTML = "Campo vazio! Digite um número";
     paragrafoVazio.style.color = "red";
     paragrafoVazio.style.display = "block";
