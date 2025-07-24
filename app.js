@@ -17,6 +17,7 @@ exibirMensagemInicial();
 
 function verificarChute() {
   let chute = document.querySelector("input").value;
+  focoNoInput();
   if (chute == numeroSecreto) {
     exibirTextoNaTela("h1", "Acertou!");
     let palavraTentativa = tentativas > 1 ? "tentativas" : "tentativa";
@@ -62,4 +63,10 @@ function reiniciarJogo() {
   tentativas = 1;
   exibirMensagemInicial();
   document.getElementById("reiniciar").setAttribute("disabled", true);
+  focoNoInput();
+}
+
+function focoNoInput() {
+  let meuInput = document.querySelector("input");
+  meuInput.focus();
 }
