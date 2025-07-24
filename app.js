@@ -16,8 +16,16 @@ function exibirMensagemInicial() {
 exibirMensagemInicial();
 
 function verificarChute() {
-  let chute = document.querySelector("input").value;
+  let chute = document.querySelector("input").value.trim();
   focoNoInput();
+  if (chute === "") {
+    let paragrafoVazio = document.getElementById("vazio");
+    paragrafoVazio.innerHTML = "Campo vazio! Digite um número";
+    paragrafoVazio.style.color = "red";
+    paragrafoVazio.style.display = "block";
+    return;
+  }
+
   if (chute == numeroSecreto) {
     exibirTextoNaTela("h1", "Acertou!");
     let palavraTentativa = tentativas > 1 ? "tentativas" : "tentativa";
@@ -33,6 +41,11 @@ function verificarChute() {
     tentativas += 1;
     limparCampo();
   }
+  document.querySelector("input").addEventListener("input", () => {
+    let paragrafoVazio = document.getElementById("vazio");
+    paragrafoVazio.innerHTML = "";
+    paragrafoVazio.style.display = "none";
+  });
 }
 
 function gerarNumeroAleatorio() {
